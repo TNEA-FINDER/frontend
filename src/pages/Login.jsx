@@ -20,7 +20,12 @@ const Login = () => {
         navigate('/');
       }
     } catch (err) {
-      setError('Invalid username or password');
+      console.error("Login error:", err);
+      if (err.response) {
+        setError('Invalid username or password');
+      } else {
+        setError('Network error: Unable to connect to backend.');
+      }
     }
   };
 
